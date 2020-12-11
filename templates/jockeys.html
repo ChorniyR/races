@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    {% block head %}
+        <title>horses</title>
+        {{ super() }}
+    {% endblock %}
+</head>
+
+<body>
+    {% block navbar %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block container %}
+    <div class="container d-flex justify-content-around pt-6 flex-wrap pt-6">
+        {% for jockey in jockeys %}
+        <div class="card" style="width: 18rem;">
+             <img class="card-img-top" src="https://creazilla-store.fra1.digitaloceanspaces.com/silhouettes/2814/bronc-rider-silhouette-fd8c25-md.png" alt="Card image cap">
+             <div class="card-body">
+                <p class="card-text"> Имя: {{ jockey.name }} </br>
+                                      Возраст: {{ jockey.age }} лет </br>
+                                      Колличество побед: {{ jockey.win_score }}</p>
+             </div>
+        </div>
+        {% endfor %}
+    </div>
+        <form method="POST">
+            <div class="form-group">
+                {{ form.name.label }} {{ form.name() }}
+                {{ form.age.label }}{{ form.age() }}
+                {{ form.submit() }}
+            </div>
+        </form>
+    {% endblock %}
+</body>
+</html>
