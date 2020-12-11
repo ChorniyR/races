@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    {% block head %}
+        <title>home</title>
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+  <!--==============================header=================================-->
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+  <!--==============================content================================-->
+    {% block container %}
+
+
+    <section id="content"><div class="ic"></div>
+
+    </section>
+  {% endblock %}
+<!--==============================footer=================================-->
+  <footer>
+
+  </footer>	       
+<script>
+	Cufon.now();
+</script>
+</body>
+</html>

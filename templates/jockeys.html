@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<html lang="en">
+<head>
+    {% block head %}
+        <title>horses</title>
+        {{ super() }}
+    {% endblock %}
+</head>
+
+<body>
+    {% block navbar %}
+        {{ super() }}
+    {% endblock %}
+
+    {% block container %}
+    <div class="container d-flex justify-content-around pt-6 flex-wrap pt-6">
+               <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">Имя наездника</th>
+                  <th scope="col">Возраст наездника</th>
+                  <th scope="col">Колличиство побед</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for jockey in jockeys %}
+                <tr>
+                  <th scope="row">{{ jockey.id }}</th>
+                  <td>{{jockey.name}}</td>
+                  <td>{{ jockey.age }}</td>
+                  <td>{{ jockey.win_score }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+        </table>
+    </div>
+        <form method="POST">
+            <div class="form-group">
+                {{ form.name.label }} {{ form.name() }}
+                {{ form.age.label }}{{ form.age() }}
+                {{ form.submit() }}
+            </div>
+        </form>
+    {% endblock %}
+</body>
+</html>
