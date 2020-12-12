@@ -15,6 +15,12 @@
 
     {% block container %}
     <div class="container d-flex justify-content-around flex-wrap pt-6">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ url_for('page.horses_sorted') }}">По возрастанию победы</a></li>
+            <li class="breadcrumb-item"><a href="{{ url_for('page.horses_sorted_rev') }}">По убыванию победы</a></li>
+          </ol>
+        </nav>
 
         <table class="table">
               <thead>
@@ -41,10 +47,11 @@
     </div>
     <form method="POST">
         <div class="form-group">
-            {{ form.name.label }} {{ form.name() }}
-            {{ form.age.label }}{{ form.age() }}
-            {{ form.jockey.label }}{{ form.jockey }}
-            {{ form.submit() }}
+            {{ form.name.label }} {{ form.name(class='form-control') }}
+            {{ form.age.label }}{{ form.age(class='form-control') }}
+            {{ form.jockey.label }}{{ form.jockey(class='form-control form-control-lg')}}
+            {{ form.suit.label}} {{ form.suit}}
+            {{ form.submit(class="btn btn-lg btn-primary") }}
         </div>
     </form>
     {% endblock %}
