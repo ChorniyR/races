@@ -14,26 +14,53 @@
     {% endblock %}
 
     {% block container %}
-    <div class="container d-flex justify-content-around pt-6">
+    <div class="container d-flex justify-content-around flex-wrap pt-6">
+        <form method="POST">
+            {{ date_form.date }}
+            {{ date_form.find }}
+        </form>
+
+        <form method="POST">
+            {{ horse_form.horse }}
+            {{ horse_form.submit }}
+        </form>
+
+        <form method="POST">
+            {{ jockeys_form.jockey }}
+            {{ jockeys_form.submit }}
+        </form>
         <table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Имя лошади</th>
-      <th scope="col">Имя жоккея</th>
-      <th scope="col">место</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-  </tbody>
+            <thead>
+                <tr>
+                    <th scope="col">Место</th>
+                    <th scope="col">Дата соревнования</th>
+                    <th scope="col">Название ипподрома</th>
+                    <th scope="col">Имя лошади</th>
+                    <th scope="col">Имя наездника</th>
+                </tr>
+            </thead>
+                <tbody>
+                    {% for partitipition in partitipitions %}
+                    <tr>
+                            <td>{{ partitipition.place }}</td>
+                            <td>{{ partitipition.competition.date }}</td>
+                            <td>{{ partitipition.competition.hippodrome.name }}</td>
+                            <td>{{ partitipition.horse.name }}</td>
+                            <td>{{ partitipition.jockey.name }}</td>
+                    </tr>
+                     {% endfor %}
+            </tbody>
         </table>
+        <form method="POST">
+            {{ form.csrf_token }}
+            {{ form.place(class='form-control', placeholder='Место')}}
+            {{ form.horse.label }}{{ form.horse(class='form-control form-control-lg') }}
+            {{ form.jockey.label }}{{ form.jockey(class='form-control form-control-lg')  }}
+            {{ form.competition.label }}{{ form.competition(class='form-control form-control-lg')  }}
+            {{ form.submit(class="btn btn-lg btn-primary") }}
+        </form>
 
     {% endblock %}
+    </div>
 </body>
 </html>
