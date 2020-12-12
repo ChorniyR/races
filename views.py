@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash
 
 import models
+from forms import HorseForm, JockeyForm
 
 page = Blueprint('page', __name__, template_folder='templates')
 
@@ -12,7 +13,7 @@ def home_page():
 
 @page.route('/horses', methods=['GET', 'POST'])
 def horses():
-    form = models.HorseForm(request.form)
+    form = HorseForm(request.form)
     horses = models.Horse.query.all()
     if request.method == "POST":
         name = form.name.data
@@ -23,7 +24,7 @@ def horses():
 
 @page.route('/jockeys', methods=['GET', 'POST'])
 def jockeys():
-    form = models.JockeyForm(request.form)
+    form = JockeyForm(request.form)
     jockeys = models.Jockey.query.all()
     if request.method == 'POST':
         name = form.name.data
@@ -34,5 +35,5 @@ def jockeys():
 
 @page.route('/events')
 def events():
-    events = models.Event.query.all()
+    events = models.Pair.query.all()
     return render_template('events.html', events=events)

@@ -1,4 +1,5 @@
 from flask import Flask
+
 import views
 from database import db
 from settings import Config
