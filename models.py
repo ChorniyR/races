@@ -25,7 +25,7 @@ class Horse(db.Model):
         db.session.commit()
 
     def __repr__(self):
-        return "<Horse('%s',%s',%s)>" % (self.name, self.age, self.suit)
+        return f"Лошадь(Кличка: {self.name}, {self.age} лет, {self.suit})"
 
 
 class Jockey(db.Model):
@@ -39,7 +39,7 @@ class Jockey(db.Model):
     horses = db.relationship('Horse')
 
     def __repr__(self):
-        return "<Jockey(%s, %s, %s)>" % (self.id, self.name, self.age)
+        return f"Наездник(Имя: {self.name}, возраст {self.age})"
 
     def save(self):
         db.session.add(self)
