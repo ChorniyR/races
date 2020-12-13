@@ -80,5 +80,6 @@ def events():
 
         if form.data and form.validate_on_submit():
             form.save()
+
     return render_template('events.html', partitipitions=partitipitions, form=form, date_form=date_form,
                            horse_form=horses_form, jockeys_form=jockeys_form)
